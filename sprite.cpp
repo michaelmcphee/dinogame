@@ -1,5 +1,6 @@
 #include "sprite.h"
 
+// Constructor for sprite
 sprite::sprite(bool dino){
     type = dino;
     if (type){
@@ -19,18 +20,21 @@ sprite::sprite(bool dino){
     SetConsoleCursorInfo(console, & cursor);
 }
 
+// Move sprite down
 void sprite::down(){
     erase();
     y++;
     print();
 }
 
+// Move sprite up
 void sprite::up(){
     erase();
     y--;
     print();
 }
 
+// Move sprite left
 void sprite::left(){
     erase();
     if(!x) x = 50;
@@ -40,31 +44,35 @@ void sprite::left(){
     printscore();
 }
 
+// Print the current score
 void sprite::printscore(){
     score++;
     setxy(0, 0);
     std::cout<<"Score: " <<score;
 }
 
-
+// Set the console cursor position
 void sprite::setxy(int x, int y){
     coord.X = x;
     coord.Y = y;
     SetConsoleCursorPosition(console, coord);
 }
 
+// Erase the sprite
 void sprite::erase(){
     setxy(x,y);
     if (type) std::cout<<" ";
     else std::cout<<"_";
 }
 
+// Print the sprite
 void sprite::print(){
     setxy(x,y);
     if (type) std::cout<<"O";
     else std::cout<<"|";
 }
 
+// Draw the ground
 void sprite::drawground(){
     for (int i = 0; i < 50; i++){
         setxy(i,10);
@@ -72,7 +80,9 @@ void sprite::drawground(){
     }
 }
 
+// Debugging function (unused)
 void sprite::debug(){
     setxy(8, 9);
     std::cout<<y;
 }
+
