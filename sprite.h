@@ -6,12 +6,15 @@
 #include <windows.h>
 
 class sprite {
+private:
+    bool type;
+    COORD coord;
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    void erase();
+
 public:
     int x,y;
     int score;
-    bool type;
-    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD coord;
     sprite(bool dino);
     bool isjumping;
     void up();
@@ -20,7 +23,6 @@ public:
     void printscore();
     void setxy(int x, int y);
     void print();
-    void erase();
     void debug();
     void drawground();
 };
